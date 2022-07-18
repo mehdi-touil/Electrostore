@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .categorygrid
+    each category in categories
+      -const imageSrc= category.image?`data:image/${category.image.contentType};base64,${category.image.data.toString('base64')}`:'/images/imgnotav.png'
+      a(href="/products/category/"+category.id,class='griditem')   
+        .categorycover
+          img(src=imageSrc)
+        .categorytext 
+          .categoryname  #{category.name}
+          .categorydescription 
+            div #{category.description}
+            div.icons
+              object
+                a(href='/category/'+ category.id +'/confirmdel') 
+                  i(class="fa-solid fa-trash-can fa-3x")
+              object    
+                a(href='/category/create') 
+                  i(class="fa-solid fa-circle-plus fa-3x")
+              object  
+                a(href='/category/'+ category.id +'/update') 
+                  i(class="fa-solid fa-pen-to-square fa-3x")

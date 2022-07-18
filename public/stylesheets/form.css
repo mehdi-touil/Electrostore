@@ -1,0 +1,79 @@
+.formcontainer {
+  height: calc(100% - 11vh);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  color: white;
+  font-family: "Sora", sans-serif;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  height: 99%;
+  width: 70%;
+  background-color: #2d3436;
+  border-radius: 10px;
+}
+input[type="file"] {
+  display: none;
+}
+form input,
+#error,
+form select,
+form textarea,
+[for="image"],
+.cancel {
+  background-color: antiquewhite;
+  width: 90%;
+  height: 10%;
+  border-radius: 20px;
+  margin: 5px;
+  background-color: #e7eff9;
+  font-family: "Sora", sans-serif;
+  font-size: 1.5rem;
+  border: 2px solid #2d3436;
+}
+#error {
+  height: auto;
+  text-align: center;
+  background-color: crimson;
+}
+form div {
+  text-align: center;
+}
+form textarea {
+  border-radius: 20px 20px 0px 20px;
+  padding: 5px;
+}
+[for="image"] {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #2d3436;
+  padding: 5px;
+}
+[for="image"]:hover {
+  cursor: pointer;
+}
+[type="submit"] {
+  text-transform: capitalize;
+}
+[type="submit"]:hover,
+.cancel:hover {
+  background-color: rgb(134, 123, 191);
+}
+.cancel {
+  color: black;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+@media screen and (max-width: 580px) {
+  form {
+    width: 95%;
+  }
+}

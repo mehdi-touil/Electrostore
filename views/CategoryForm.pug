@@ -1,0 +1,22 @@
+extends layout
+block cssfiles 
+  link(rel="stylesheet" href="/stylesheets/form.css")
+block content
+  .formcontainer
+    - const formAction= typeof(locals.category ) !== 'undefined'?"/category/"+locals.category.id+'/update' :"/category" 
+    form(action=formAction method="post" enctype="multipart/form-data")
+      span#error #{locals.error}
+      label(for="name") Category Name
+      -const value =locals.action=='update'? locals.category.name : ''
+      input(type="text" name='name' id="name", value = value) 
+      label(for="description") Description
+      textarea(type="text" name='description' id="description" cols="20" rows="20") #{locals.action=='update'? locals.category.description : ''}
+      label(for="image") 
+        div Upload a Cover
+        i(class="fa-solid fa-cloud-arrow-up fa-2x")
+      input(type="file" name="image" id='image') 
+      label(for="pass") Admin Password
+      -const pass =typeof(locals.category ) == 'undefined'?'':locals.category.pass 
+      input(type="password" name='pass' id="pass" value=pass) 
+      input(type="submit" value= locals.title + " Category")
+      a(href="/category" class='cancel') Cancel 

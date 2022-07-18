@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+    .categorygrid
+        each val in [1,2,3,4,5,6,7,8]
+            .griditem 
+                .categorycover
+                    img(src="/images/laptop.webp" width='50px')
+                .categorytext 
+                    .categoryname Laptops 
+                    .categorydescription 
+                        div Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae, velit.
+                        div.icons
+                            i(class="fa-solid fa-trash-can fa-10x")
+                            i(class="fa-solid fa-pen-to-square fa-10x")
+

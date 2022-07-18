@@ -1,0 +1,25 @@
+extends layout
+block content
+    .itemsgrid
+        each product in products
+            -const imageSrc= product.image?`data:image/${product.image.contentType};base64,${product.image.data.toString('base64')}`:'/images/imgnotav.png'
+            .itemgrid 
+                .itemcover
+                    img(src=imageSrc)
+                .itemwrapper
+                    .itemtext 
+                        .itemname  #{product.name}
+                        .itemcategory #{product.category.name}
+                        .itemstocktitle Stock
+                        .itemstock #{product['number-in-stock']}
+                        .itemdescriptiontitle About
+                        .itemdescription #{product.description}
+                        .itemprice #{'$'+product.price }
+
+                    div.iconsp
+                        a(href='/products/'+ product.id +'/confirmdel') 
+                            i(class="fa-solid fa-trash-can fa-2x")
+                        a(href='/products/create') 
+                            i(class="fa-solid fa-circle-plus fa-2x")
+                        a(href='/products/'+ product.id +'/update') 
+                            i(class="fa-solid fa-pen-to-square fa-2x")

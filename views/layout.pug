@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title='Inventory Application'
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    block cssfiles
+    script(src="https://kit.fontawesome.com/3ce668455b.js" crossorigin="anonymous")
+    script(src="/javascripts/script.js" defer) 
+  body
+    .header 
+      .logo 
+        img(src="/images/logo.png" alt="alt")
+      .headerpanel
+        .itemcontainer
+          .itemcontainerinside
+            a(href="/category" class="item") Category
+            .border
+          a(href="/category/create")
+            i(class="fa-solid fa-circle-plus fa-xl")
+
+        .itemcontainer
+          .itemcontainerinside
+            a(href="/products" class="item") Products 
+            .border
+          a(href="/products/create")
+            i(class="fa-solid fa-circle-plus fa-xl")
+
+
+        .search
+          i(class="fa-solid fa-magnifying-glass fa-xl")
+
+        .menu
+          i(class="fa-solid fa-cart-shopping fa-xl")
+    .searchpage 
+      form(class='searchbar' action='/products' method='post') 
+        input(type="text" name='keyword' placeholder="Search For Product...")
+        input(type="submit" value="Submit" id='submitsearch')
+        .searchbtn
+          i(class="sicon fa-solid fa-magnifying-glass fa-xl")
+    block content

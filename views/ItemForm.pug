@@ -1,0 +1,33 @@
+extends layout
+block cssfiles 
+    link(rel="stylesheet" href="/stylesheets/form.css")
+block content
+    .formcontainer
+        - const formAction= locals.title!='add'?"/products/"+locals.product.id+'/update' :"/products/create" 
+        form(action=formAction method="post" enctype="multipart/form-data")
+            span#error #{error}
+            label(for="name") Product Name
+            -var value =locals.action=='update'? locals.product.name : ''
+            input(type="text" name='name' id="name", value = value) 
+            label(for="Price") Price
+            - value = locals.action=='update'? locals.product.price : ''
+            input(type="number" name='price' id="Price" value=value)
+            label(for="Stock") Stock
+            - value = locals.action=='update'? locals.product['number-in-stock'] : ''
+            input(type="number" name='Stock' id="Stock" value=value)
+            label(for="category") Category
+            select(name='categoryId' id='category')
+                each category in categories
+                    -var selected = title=='add'? false:category.id==locals.product.category.id
+                    option(value=category.id,selected=selected) #{category.name}    
+            label(for="description") Description
+            textarea(type="text" name='description' id="description" cols="20" rows="20") #{locals.action=='update'? locals.product.description : ''}
+            label(for="image") 
+                div Upload a Cover
+                i(class="fa-solid fa-cloud-arrow-up fa-2x")
+            input(type="file" name="image" id='image') 
+            label(for="pass") Admin Password
+            -const pass =typeof(locals.category ) == 'undefined'?'':locals.category.pass 
+            input(type="password" name='pass' id="pass" value=pass) 
+            input(type="submit" value= locals.title + " Product")
+            a(href="/products" class='cancel') Cancel 
